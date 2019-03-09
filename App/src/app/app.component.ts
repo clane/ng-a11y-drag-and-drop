@@ -13,8 +13,9 @@ export class AppComponent {
   }
   
  drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
+    //event.dataTransfer.setData("text", event.target.id);
     console.log('in drag'); 
+    console.log(event); 
   }
   
  drop(event) {

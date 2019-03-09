@@ -3,7 +3,7 @@
 <section id="dragzone">
   <div class="zoneLabel">DRAG ZONE</div>
 
-  <div id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0">
+  <div id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0" (keydown)="drag($event)">
     <div id="dragLabel">
       Drag this object
     </div>
