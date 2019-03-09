@@ -4,8 +4,19 @@ h1 { width:100%; text-align:center; }
 
 .zoneLabel { font-weight:bold; font-size:2rem; }
 
-#dragObj { border:3px solid #000; width:150px; height:150px; margin:auto; font-weight:bold; text-align:center; padding:20px; font-size:3rem; }
+#dragObj { 
+    border:3px solid #000; 
+    width:150px; height:150px; 
+    margin:auto; 
+    font-weight:bold; 
+    text-align:center;
+    padding:20px; 
+    font-size:3rem; 
+    border-radius:10px;
+    background-color: #000; 
+    color:yellow; 
+ }
 
 /* ZONES */
 #dragzone{ width:80%; height:350px; border:4px solid #000; margin:auto; padding:20px; }
-#dropzone { border:4px solid#000; width:80%; height:350px; margin: 20px auto; padding:20px; } 
+#dropzone { border:4px dotted #000; width:80%; height:350px; margin: 20px auto; padding:20px; } 
