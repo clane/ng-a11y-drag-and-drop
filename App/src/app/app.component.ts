@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'App';
+
+ allowDrop(event) {
+    event.preventDefault();
+  }
+  
+ drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+    console.log('in drag'); 
+  }
+  
+ drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+  }
+
 }
