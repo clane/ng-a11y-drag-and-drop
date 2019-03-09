@@ -1,13 +1,11 @@
 
 
-h1 { width:100%; text-align: center; }
+h1 { width:100%; text-align:center; }
 
-#dragObj { border:3px solid #000; width:100px; height:100px; margin:auto; font-weight:bold; text-align:center; }
-#dragLabel { height:200px; width:60%; margin:20px auto; }
+.zoneLabel { font-weight:bold; font-size:2rem; }
+
+#dragObj { border:3px solid #000; width:150px; height:150px; margin:auto; font-weight:bold; text-align:center; padding:20px; font-size:3rem; }
 
 /* ZONES */
-#dragzone{ width:40%; height:150px; border:4px solid #000; margin:auto; padding:20px; }
-#dragzoneLabel {}
-
-#dropzone { border:4px solid #000; width:40%; height:150px; margin: 20px auto; padding:20px; } 
-#dropzoneLabel {}
+#dragzone{ width:80%; height:350px; border:4px solid #000; margin:auto; padding:20px; }
+#dropzone { border:4px solid #000; width:80%; height:350px; margin: 20px auto; padding:20px; } 
