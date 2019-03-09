@@ -8,4 +8,4 @@ h1 { width:100%; text-align:center; }
 
 /* ZONES */
 #dragzone{ width:80%; height:350px; border:4px solid #000; margin:auto; padding:20px; }
-#dropzone { border:4px solid #000; width:80%; height:350px; margin: 20px auto; padding:20px; } 
+#dropzone { border:4px solid#000; width:80%; height:350px; margin: 20px auto; padding:20px; } 
