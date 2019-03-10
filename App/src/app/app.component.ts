@@ -23,8 +23,6 @@ export class AppComponent {
 
   drag($event) {
     $event.dataTransfer.setData("text", $event.target.id);
-
-
   }
 
   drop($event) {
@@ -45,6 +43,9 @@ export class AppComponent {
         dragObjRect.right < dropzoneRect.right
       ){
       alert('over drop zone');
+      this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
+      this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
+
     }
 
     var keyCode = $event.keyCode;

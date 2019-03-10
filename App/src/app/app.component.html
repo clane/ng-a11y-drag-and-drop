@@ -2,9 +2,9 @@
 
 
 <h1>{{ title }}</h1>
-<div class="">
+<div id="wrapper1">
 
-<section id="dragzone">
+<section id="dragzone" class="zone">
   <div class="zoneLabel">DRAG ZONE</div>
 
   <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0" (keydown)="getKeyAndMove($event)">
@@ -14,7 +14,7 @@
   </div>
 </section>
 
-<section #dropzone id="dropzone" (drop)="drop($event)" (dragover)="allowDrop($event)" aria-live="polite">
+<section #dropzone id="dropzone" class="zone" (drop)="drop($event)" (dragover)="allowDrop($event)" aria-live="polite">
   <div class="zoneLabel">DROP ZONE</div>
 </section>
 
