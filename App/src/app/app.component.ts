@@ -9,6 +9,8 @@ import { element } from '@angular/core/src/render3';
 export class AppComponent {
   title = 'A11y Drag and Drop';
   @ViewChild('dragObj') elementToDrag;
+  top = 0;
+  left = 0; 
 
   allowDrop(event) {
     event.preventDefault();
@@ -50,7 +52,6 @@ export class AppComponent {
         this.moveDown();
         break;
     }
-
     
   }
 
@@ -58,35 +59,31 @@ export class AppComponent {
     console.log('move left');
     //console.log(this.elementToDrag.nativeElement);
     //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
-
     //console.log(this.elementToDrag.nativeElement.style);
     //console.log(this.elementToDrag.nativeElement.style.left);
      
-    var leftValue = parseInt(this.elementToDrag.nativeElement.style.left);
-
-    leftValue - 5;
-
-
-
-    console.log(leftValue); 
-
-
-
+    this.left = this.left - 5;
+    this.elementToDrag.nativeElement.style.left = this.left; 
+    console.log(this.left); 
   }
 
   moveUp() {
     console.log('move up');
     //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+    this.top = this.top - 5;
   }
 
   moveRight() {
     console.log('move right');
     //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+    this.left = this.left + 5;
+    console.log(this.left); 
   }
 
   moveDown() {
     console.log('move down');
     //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+    this.top = this.top + 5;
   }
 
   
