@@ -12,9 +12,11 @@ export class AppComponent {
 
   title = 'A11y Drag and Drop';
   @ViewChild('dragObj') elementToDrag;
+  @ViewChild('dropzone') placeToDrop;
   top = 0;
   left = 0; 
 
+  
   allowDrop(event) {
     event.preventDefault();
   }
@@ -31,10 +33,26 @@ export class AppComponent {
   
     $event.preventDefault(); 
     var dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+    var dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
+    console.log('drop zone rect');
+    console.log(dropzoneRect); 
+    console.log(dropzoneRect.top);
+    console.log(dropzoneRect.left);
+    console.log(dropzoneRect.bottom);
+    console.log(dropzoneRect.right);
 
     console.log(dragObjRect);
+    console.log(dragObjRect.top);
+    console.log(dragObjRect.left);
+    console.log(dragObjRect.bottom);
+    console.log(dragObjRect.right);
+
+    if(dragObjRect.top > dropzoneRect.top){
+      alert('over drop zone');
+    }
 
     var keyCode = $event.keyCode;
+
     switch (keyCode) {
       case 37: //left arrow key
         this.moveLeft();
