@@ -19,11 +19,7 @@ export class AppComponent {
     event.preventDefault();
   }
 
-  drag(event) {
-    //event.dataTransfer.setData("text", event.target.id);
-    console.log('in drag');
-    console.log(event);
-  }
+  drag(event) {}
 
   drop(event) {
     event.preventDefault();
@@ -32,9 +28,7 @@ export class AppComponent {
   }
 
   getKeyAndMove($event) {
-    //console.log('in getKeyAndMove');
-    //console.log(event);
-    //console.log(event.keyCode);
+  
     $event.preventDefault(); 
     var dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
 
@@ -57,36 +51,24 @@ export class AppComponent {
         break;
     }
 
-    console.log(this.left); 
-    console.log(this.top); 
-
     this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
     this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
     
   }
 
   moveLeft() {
-    console.log('move left');
-    //console.log(this.elementToDrag.nativeElement);
-    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
-    //console.log(this.elementToDrag.nativeElement.style);
-    //console.log(this.elementToDrag.nativeElement.style.left);
-    
     this.left = this.left - 5;
   }
 
   moveUp() {
-    console.log('move up');
     this.top = this.top - 5;
   }
 
   moveRight() {
-    console.log('move right');
     this.left = this.left + 5;
   }
 
   moveDown() {
-    console.log('move down');
     this.top = this.top + 5;
   }
 
