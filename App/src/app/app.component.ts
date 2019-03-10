@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'A11y Drag and Drop';
+  @ViewChild('dragObj') elementToDrag;
 
   allowDrop(event) {
     event.preventDefault();
@@ -25,9 +27,13 @@ export class AppComponent {
   }
 
   getKeyAndMove($event) {
-    console.log('in getKeyAndMove');
-    console.log(event);
-    console.log(event.keyCode);
+    //console.log('in getKeyAndMove');
+    //console.log(event);
+    //console.log(event.keyCode);
+
+    var dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+
+    console.log(dragObjRect);
 
     var keyCode = event.keyCode;
     switch (keyCode) {
@@ -44,26 +50,34 @@ export class AppComponent {
         this.moveDown();
         break;
     }
-  }
 
-  moveLeft(){
-    console.log('move left');
     
   }
 
-  moveUp(){
-    console.log('move up');
+  moveLeft() {
+    console.log('move left');
+    console.log(this.elementToDrag.nativeElement);
+    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
 
+    console.log(this.elementToDrag.nativeElement.style);
+    this.elementToDrag.nativeElement.style.left = parseInt(this.elementToDrag.nativeElement.style.left) - 5 + 'px';
   }
 
-  moveRight(){
-    console.log('move right');
+  moveUp() {
+    console.log('move up');
+    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+  }
 
+  moveRight() {
+    console.log('move right');
+    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
   }
 
   moveDown() {
     console.log('move down');
-
+    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
   }
 
+  
 }
+

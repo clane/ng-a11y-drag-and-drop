@@ -6,13 +6,13 @@
 <section id="dragzone">
   <div class="zoneLabel">DRAG ZONE</div>
 
-  <div id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0" (keydown)="getKeyAndMove($event)">
+  <div #dragObj id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0" (keydown)="getKeyAndMove($event)">
     <div id="dragLabel">
       Drag this object
     </div>
   </div>
 </section>
 
-<section id="dropzone" (drop)="drop($event)" (dragover)="allowDrop($event)" aria-live="polite">
+<section #dropzone id="dropzone" (drop)="drop($event)" (dragover)="allowDrop($event)" aria-live="polite">
   <div class="zoneLabel">DROP ZONE</div>
 </section>
