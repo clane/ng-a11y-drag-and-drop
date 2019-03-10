@@ -2,6 +2,7 @@
 
 
 <h1>{{ title }}</h1>
+<div class="">
 
 <section id="dragzone">
   <div class="zoneLabel">DRAG ZONE</div>
@@ -16,3 +17,5 @@
 <section #dropzone id="dropzone" (drop)="drop($event)" (dragover)="allowDrop($event)" aria-live="polite">
   <div class="zoneLabel">DROP ZONE</div>
 </section>
+
+</div>

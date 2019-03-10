@@ -17,16 +17,20 @@ export class AppComponent {
   left = 0; 
 
   
-  allowDrop(event) {
-    event.preventDefault();
+  allowDrop($event) {
+    $event.preventDefault();
   }
 
-  drag(event) {}
+  drag($event) {
+    $event.dataTransfer.setData("text", $event.target.id);
 
-  drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(data));
+
+  }
+
+  drop($event) {
+    $event.preventDefault();
+    var data = $event.dataTransfer.getData("text");
+    $event.target.appendChild(document.getElementById(data));
   }
 
   getKeyAndMove($event) {
@@ -34,20 +38,12 @@ export class AppComponent {
     $event.preventDefault(); 
     var dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
     var dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
-    console.log('drop zone rect');
-    console.log(dropzoneRect); 
-    console.log(dropzoneRect.top);
-    console.log(dropzoneRect.left);
-    console.log(dropzoneRect.bottom);
-    console.log(dropzoneRect.right);
-
-    console.log(dragObjRect);
-    console.log(dragObjRect.top);
-    console.log(dragObjRect.left);
-    console.log(dragObjRect.bottom);
-    console.log(dragObjRect.right);
-
-    if(dragObjRect.top > dropzoneRect.top){
+   
+    if(dragObjRect.top > dropzoneRect.top && 
+        dragObjRect.left > dropzoneRect.left &&
+        dragObjRect.bottom < dropzoneRect.bottom &&
+        dragObjRect.right < dropzoneRect.right
+      ){
       alert('over drop zone');
     }
 
