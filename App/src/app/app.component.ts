@@ -56,26 +56,37 @@ export class AppComponent {
 
   moveLeft() {
     console.log('move left');
-    console.log(this.elementToDrag.nativeElement);
-    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+    //console.log(this.elementToDrag.nativeElement);
+    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
 
-    console.log(this.elementToDrag.nativeElement.style);
-    this.elementToDrag.nativeElement.style.left = parseInt(this.elementToDrag.nativeElement.style.left) - 5 + 'px';
+    //console.log(this.elementToDrag.nativeElement.style);
+    //console.log(this.elementToDrag.nativeElement.style.left);
+     
+    var leftValue = parseInt(this.elementToDrag.nativeElement.style.left);
+
+    leftValue - 5;
+
+
+
+    console.log(leftValue); 
+
+
+
   }
 
   moveUp() {
     console.log('move up');
-    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
   }
 
   moveRight() {
     console.log('move right');
-    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
   }
 
   moveDown() {
     console.log('move down');
-    console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
+    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
   }
 
   

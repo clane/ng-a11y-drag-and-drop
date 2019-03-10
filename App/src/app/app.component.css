@@ -5,6 +5,7 @@ h1 { width:100%; text-align:center; }
 .zoneLabel { font-weight:bold; font-size:2rem; }
 
 #dragObj { 
+    position:relative;
     border:3px solid #000; 
     width:150px; height:150px; 
     margin:auto; 
