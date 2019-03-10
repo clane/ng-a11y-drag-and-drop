@@ -24,4 +24,10 @@ export class AppComponent {
     event.target.appendChild(document.getElementById(data));
   }
 
+  getKeyAndMove($event){
+    console.log('in getKeyAndMove'); 
+    console.log(event); 
+
+  }
+
 }
