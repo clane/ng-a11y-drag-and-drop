@@ -4,10 +4,10 @@
 <h1>{{ title }}</h1>
 <div id="wrapper1">
 
-<section id="dragzone" class="zone">
+<section id="dragzone" class="zone item">
   <div class="zoneLabel">DRAG ZONE</div>
 
-  <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0" (keydown)="getKeyAndMove($event)">
+  <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)"  tabindex="0" (keydown)="getKeyAndMove($event)">
     <div id="dragLabel">
       Drag this object
     </div>

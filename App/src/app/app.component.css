@@ -9,6 +9,13 @@ h1 { width:100%; text-align:center; }
     justify-content: center; 
 }
 
+.item {
+    order: row;
+    margin:auto;
+  }
+
+
+
 #dragObj { 
     position:relative;
     border:3px solid #000; 

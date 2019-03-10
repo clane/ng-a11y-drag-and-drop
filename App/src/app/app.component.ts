@@ -16,7 +16,6 @@ export class AppComponent {
   top = 0;
   left = 0; 
 
-  
   allowDrop($event) {
     $event.preventDefault();
   }
@@ -42,13 +41,14 @@ export class AppComponent {
         dragObjRect.bottom < dropzoneRect.bottom &&
         dragObjRect.right < dropzoneRect.right
       ){
-      alert('over drop zone');
+      alert('over drop zone, press the OK Button or the Enter key');
       this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
       this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
 
     }
 
     var keyCode = $event.keyCode;
+
 
     switch (keyCode) {
       case 37: //left arrow key
@@ -87,6 +87,9 @@ export class AppComponent {
     this.top = this.top + 5;
   }
 
-  
+  showKeyboardDragInstructions(){
+    alert('Use the arrow keys to drag this item to the dropzone');
+  }
+
 }
 
