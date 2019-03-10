@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 import { element } from '@angular/core/src/render3';
 
 @Component({
@@ -7,6 +7,9 @@ import { element } from '@angular/core/src/render3';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private renderer: Renderer2) {}
+
   title = 'A11y Drag and Drop';
   @ViewChild('dragObj') elementToDrag;
   top = 0;
@@ -32,12 +35,12 @@ export class AppComponent {
     //console.log('in getKeyAndMove');
     //console.log(event);
     //console.log(event.keyCode);
-
+    $event.preventDefault(); 
     var dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
 
     console.log(dragObjRect);
 
-    var keyCode = event.keyCode;
+    var keyCode = $event.keyCode;
     switch (keyCode) {
       case 37: //left arrow key
         this.moveLeft();
@@ -49,9 +52,16 @@ export class AppComponent {
         this.moveRight();
         break;
       case 40: //down arrow key
+        $event.preventDefault
         this.moveDown();
         break;
     }
+
+    console.log(this.left); 
+    console.log(this.top); 
+
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
     
   }
 
@@ -61,28 +71,22 @@ export class AppComponent {
     //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
     //console.log(this.elementToDrag.nativeElement.style);
     //console.log(this.elementToDrag.nativeElement.style.left);
-     
+    
     this.left = this.left - 5;
-    this.elementToDrag.nativeElement.style.left = this.left; 
-    console.log(this.left); 
   }
 
   moveUp() {
     console.log('move up');
-    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
     this.top = this.top - 5;
   }
 
   moveRight() {
     console.log('move right');
-    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
     this.left = this.left + 5;
-    console.log(this.left); 
   }
 
   moveDown() {
     console.log('move down');
-    //console.log(this.elementToDrag.nativeElement.getBoundingClientRect());
     this.top = this.top + 5;
   }
 
