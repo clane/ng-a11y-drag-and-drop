@@ -2,10 +2,10 @@
 
 h1 { width:100%; text-align:center; }
 
-.zoneLabel { font-weight:bold; font-size:2rem; }
+.zoneLabel { font-weight:bold; font-size:1.5rem; margin-bottom:20px; }
 
 #wrapper1 {
-  width:99%; margin:auto; 
+  width:80%; margin:auto; overflow: hidden;
 }
 
 .item {
@@ -18,7 +18,8 @@ h1 { width:100%; text-align:center; }
 #dragObj { 
     position:relative;
     border:3px solid #000; 
-    width:150px; height:150px; 
+    width:150px; 
+    height:150px; 
     margin:auto; 
     font-weight:bold; 
     text-align:center;
@@ -30,6 +31,6 @@ h1 { width:100%; text-align:center; }
  }
 
 /* ZONES */
-.zone { width:30%; height:250px; margin:auto; padding:20px; float:left; margin-right:20px; }
+.zone { width:40%; height:400px; margin:auto; padding:20px; float:left; margin-right:20px; }
 #dragzone{  border:4px solid #000; }
 #dropzone { border:4px dotted #000;  } 
