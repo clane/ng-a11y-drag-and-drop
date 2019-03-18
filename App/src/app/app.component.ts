@@ -46,6 +46,8 @@ export class AppComponent {
       this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
 
     }
+  
+
 
     var keyCode = $event.keyCode;
 
@@ -89,6 +91,12 @@ export class AppComponent {
 
   showKeyboardDragInstructions(){
     alert('Use the arrow keys to drag this item to the dropzone');
+  }
+
+  moveObject(){
+    this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
+    
   }
 
 }
