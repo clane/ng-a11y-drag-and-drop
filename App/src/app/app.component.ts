@@ -48,31 +48,28 @@ export class AppComponent {
 
     }
   
-
-
     var keyCode = $event.keyCode;
     var message;
 
-
     switch (keyCode) {
       case 37: //left arrow key
-        message = "moving left";
-        this.announceKeyboardDragStart(message); 
+        message = "moving left" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+        this.announceDragDirection(message); 
         this.moveLeft();
         break;
       case 38: //Up arrow key
-        message = "moving up";
-        this.announceKeyboardDragStart(message); 
+        message = "moving up" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+        this.announceDragDirection(message); 
         this.moveUp();
         break;
       case 39: //right arrow key
-        message = "moving right";
-        this.announceKeyboardDragStart(message); 
+        message = "moving right" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+        this.announceDragDirection(message); 
         this.moveRight();
         break;
       case 40: //down arrow key
-        message = "moving down";
-        this.announceKeyboardDragStart(message);  
+        message = "moving down" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+        this.announceDragDirection(message);  
         this.moveDown();
         break;
     }
@@ -110,7 +107,7 @@ export class AppComponent {
     
   }
 
-  announceKeyboardDragStart(message){
+  announceDragDirection(message,dragObjRect){
     var text = this.renderer.createText(message);
     this.renderer.appendChild(this.liveRegionToUpdate.nativeElement, text);
   
