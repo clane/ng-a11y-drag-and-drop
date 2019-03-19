@@ -56,15 +56,18 @@ export class AppComponent {
     switch (keyCode) {
       case 37: //left arrow key
         this.moveLeft();
+        this.announceKeyboardDragStart(); 
         break;
       case 38: //Up arrow key
+        this.announceKeyboardDragStart(); 
         this.moveUp();
         break;
       case 39: //right arrow key
+        this.announceKeyboardDragStart(); 
         this.moveRight();
         break;
       case 40: //down arrow key
-        $event.preventDefault
+        this.announceKeyboardDragStart(); 
         this.moveDown();
         break;
     }
@@ -72,7 +75,7 @@ export class AppComponent {
     this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
     this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
 
-    this.announceKeyboardDragStart(); 
+ 
     
   }
 
