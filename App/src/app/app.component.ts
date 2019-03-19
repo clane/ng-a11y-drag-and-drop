@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'A11y Drag and Drop';
   @ViewChild('dragObj') elementToDrag;
   @ViewChild('dropzone') placeToDrop;
+  @ViewChild('liveRegion') liveRegionToUpdate;
   top = 0;
   left = 0; 
 
@@ -70,6 +71,8 @@ export class AppComponent {
 
     this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
     this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
+
+    this.announceKeyboardDragStart(); 
     
   }
 
@@ -97,6 +100,12 @@ export class AppComponent {
     this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
     this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
     
+  }
+
+  announceKeyboardDragStart(){
+    var text = this.renderer.createText( "starting to drag");
+    this.renderer.appendChild(this.liveRegionToUpdate.nativeElement, text);
+  
   }
 
 }
