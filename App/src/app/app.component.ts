@@ -45,15 +45,7 @@ export class AppComponent {
     let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
     let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
 
-    if (dragObjRect.top > dropzoneRect.top &&
-      dragObjRect.left > dropzoneRect.left &&
-      dragObjRect.bottom < dropzoneRect.bottom &&
-      dragObjRect.right < dropzoneRect.right
-    ) {
-      alert('over drop zone, press the OK Button or the Enter key');
-      this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
-      this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
-    }
+ 
 
     switch (keyCode) {
       case 37: //left arrow key
@@ -80,6 +72,7 @@ export class AppComponent {
     this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
     let message = "moving left" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
     this.updateLiveRegion(message);
+    this.checkIfOverDropzone();
   }
 
   moveUp() {
@@ -89,7 +82,7 @@ export class AppComponent {
     this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
     let message = "moving up" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
     this.updateLiveRegion(message);
-    
+    this.checkIfOverDropzone();
   }
 
   moveRight() {
@@ -99,6 +92,7 @@ export class AppComponent {
     this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
     let message = "moving right" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
     this.updateLiveRegion(message);
+    this.checkIfOverDropzone();
   }
 
   moveDown() {
@@ -108,6 +102,7 @@ export class AppComponent {
     this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
     let message = "moving down" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
     this.updateLiveRegion(message);
+    this.checkIfOverDropzone();
   }
 
   showKeyboardDragInstructions() {
@@ -126,7 +121,19 @@ export class AppComponent {
     this.renderer.appendChild(this.liveRegionToUpdate.nativeElement, text);
   }
 
-
+  checkIfOverDropzone () {
+    let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+    let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
+    if (dragObjRect.top > dropzoneRect.top &&
+      dragObjRect.left > dropzoneRect.left &&
+      dragObjRect.bottom < dropzoneRect.bottom &&
+      dragObjRect.right < dropzoneRect.right
+    ) {
+      alert('over drop zone, press the OK Button or the Enter key');
+      this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
+      this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
+    }
+  }
 
 }
 
