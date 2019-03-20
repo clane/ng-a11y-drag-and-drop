@@ -44,6 +44,11 @@ export class AppComponent {
       $event.preventDefault();
     }
 
+    if(this.draggedAndDropped === true){
+      alert('press ok so start over'); 
+      this.undoMoveObjectToDropzone(); 
+    }
+
     let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
     let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
 
@@ -117,7 +122,6 @@ export class AppComponent {
     this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
     this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
     this.updateLiveRegion("The draggable object has been moved to the drop zone");
-    this.elementToDrag.nativeElement.focus();
     this.draggedAndDropped = true;
   }
 
@@ -125,7 +129,6 @@ export class AppComponent {
     this.renderer.appendChild(this.placeToDropForUndo.nativeElement, this.elementToDrag.nativeElement);
     this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
     this.updateLiveRegion("The drag and drop operation has been cancelled");
-    this.elementToDrag.nativeElement.focus();
     this.draggedAndDropped = false;
   }
 
