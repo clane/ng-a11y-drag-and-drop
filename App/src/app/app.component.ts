@@ -107,7 +107,7 @@ export class AppComponent {
     
   }
 
-  announceDragDirection(message,dragObjRect){
+  announceDragDirection(message){
     var text = this.renderer.createText(message);
     this.renderer.appendChild(this.liveRegionToUpdate.nativeElement, text);
   
