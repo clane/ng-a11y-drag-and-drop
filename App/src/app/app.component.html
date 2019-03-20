@@ -8,18 +8,12 @@
   <li>You can use a mouse to drag and drop the object</li>
   <li>You can use the keyboard by tabbing to the object and using the arrow keys to move the object to the drop zone</li>
   <li>You click or activate the following button with the keyboard </li> 
-  
-  
 </ul>
-
-
-
-
 
 <section id="dragzone" class="zone item">
   <div class="zoneLabel">DRAG ZONE</div>
 
-  <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)"  tabindex="0" (keydown)="getKeyAndMove($event)">
+  <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)"  tabindex="0" (keydown)="getKeyAndMove($event)" (focus)="showKeyboardDragInstructions()">
     <div id="dragLabel">
       Drag this object
     </div>
@@ -40,4 +34,10 @@
 <h2>Using a button to move the object to the drop zone</h2>
 <button id="moveButton" (click)="moveObject()">Move Object</button>
 
+
+<h2>Use buttons instead of the arrow keys to move the object to the drop zone</h2>
+<button (click)="moveLeft()">Move Left</button>
+<button (click)="moveRight()">Move Right</button>
+<button (click)="moveUp()">Move Up</button>
+<button (click)="moveDown()">Move Down</button>
 
