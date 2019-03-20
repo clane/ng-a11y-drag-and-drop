@@ -30,7 +30,7 @@ h1 { width:100%; text-align:center; }
     color:yellow; 
  }
 
- #moveButton { display:block; padding:10px; margin:20px auto; }
+ #moveButton { display:block; padding:10px; margin:20px 0; }
 
 /* ZONES */
 .zone { width:40%; height:400px; margin:auto; padding:20px; float:left; margin-right:20px; }
