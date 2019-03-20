@@ -57,30 +57,34 @@ export class AppComponent {
 
     switch (keyCode) {
       case 37: //left arrow key
-        this.moveLeft(dragObjRect);
+        this.moveLeft();
         break;
       case 38: //Up arrow key
-        this.moveUp(dragObjRect);
+        this.moveUp();
         break;
       case 39: //right arrow key
-        this.moveRight(dragObjRect);
+        this.moveRight();
         break;
       case 40: //down arrow key 
-        this.moveDown(dragObjRect);
+        this.moveDown();
         break;
     }
 
 
   }
 
-  moveLeft(dragObjRect) {
+  moveLeft() {
+    let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+    let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
     this.left = this.left - 5;
     this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
     let message = "moving left" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
     this.updateLiveRegion(message);
   }
 
-  moveUp(dragObjRect) {
+  moveUp() {
+    let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+    let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
     this.top = this.top - 5;
     this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
     let message = "moving up" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
@@ -88,14 +92,18 @@ export class AppComponent {
     
   }
 
-  moveRight(dragObjRect) {
+  moveRight() {
+    let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+    let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
     this.left = this.left + 5;
     this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
     let message = "moving right" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
     this.updateLiveRegion(message);
   }
 
-  moveDown(dragObjRect) {
+  moveDown() {
+    let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+    let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
     this.top = this.top + 5;
     this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
     let message = "moving down" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
