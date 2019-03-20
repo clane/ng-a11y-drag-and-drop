@@ -12,12 +12,13 @@ export class AppComponent {
   constructor(private renderer: Renderer2) { }
 
   title = 'A11y Drag and Drop';
-  @ViewChild('dragObj') elementToDrag:ElementRef;
-  @ViewChild('dropzone') placeToDrop:ElementRef;
-  @ViewChild('dropzone2') placeToDropForUndo:ElementRef;
-  @ViewChild('liveRegion') liveRegionToUpdate:ElementRef;
+  @ViewChild('dragObj') elementToDrag: ElementRef;
+  @ViewChild('dropzone') placeToDrop: ElementRef;
+  @ViewChild('dropzone2') placeToDropForUndo: ElementRef;
+  @ViewChild('liveRegion') liveRegionToUpdate: ElementRef;
   top = 0;
   left = 0;
+  draggedAndDropped = false;
 
 
 
@@ -46,9 +47,12 @@ export class AppComponent {
     let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
     let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
 
- 
+
 
     switch (keyCode) {
+      case 27: //escape key
+        this.undoMoveObjectToDropzone();
+        break; 
       case 37: //left arrow key
         this.moveLeft();
         break;
@@ -62,8 +66,6 @@ export class AppComponent {
         this.moveDown();
         break;
     }
-
-
   }
 
   moveLeft() {
@@ -115,30 +117,36 @@ export class AppComponent {
     this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
     this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
     this.updateLiveRegion("The draggable object has been moved to the drop zone");
+    this.elementToDrag.nativeElement.focus();
+    this.draggedAndDropped = true;
   }
 
   undoMoveObjectToDropzone() {
     this.renderer.appendChild(this.placeToDropForUndo.nativeElement, this.elementToDrag.nativeElement);
     this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
     this.updateLiveRegion("The drag and drop operation has been cancelled");
+    this.elementToDrag.nativeElement.focus();
+    this.draggedAndDropped = false;
   }
-  
+
 
   updateLiveRegion(message) {
     var text = this.renderer.createText(message);
     this.renderer.appendChild(this.liveRegionToUpdate.nativeElement, text);
   }
 
-  checkIfOverDropzone () {
-    let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
-    let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
-    if (dragObjRect.top > dropzoneRect.top &&
-      dragObjRect.left > dropzoneRect.left &&
-      dragObjRect.bottom < dropzoneRect.bottom &&
-      dragObjRect.right < dropzoneRect.right
-    ) {
-      alert('over drop zone, press the OK Button or the Enter key');
-      this.moveObjectToDropzone(); 
+  checkIfOverDropzone() {
+    if (!this.draggedAndDropped) {
+      let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+      let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
+      if (dragObjRect.top > dropzoneRect.top &&
+        dragObjRect.left > dropzoneRect.left &&
+        dragObjRect.bottom < dropzoneRect.bottom &&
+        dragObjRect.right < dropzoneRect.right
+      ) {
+        alert('over drop zone, press the OK Button or the Enter key');
+        this.moveObjectToDropzone();
+      }
     }
   }
 
