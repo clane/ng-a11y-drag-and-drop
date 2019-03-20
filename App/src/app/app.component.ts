@@ -14,6 +14,7 @@ export class AppComponent {
   title = 'A11y Drag and Drop';
   @ViewChild('dragObj') elementToDrag:ElementRef;
   @ViewChild('dropzone') placeToDrop:ElementRef;
+  @ViewChild('dropzone2') placeToDropForUndo:ElementRef;
   @ViewChild('liveRegion') liveRegionToUpdate:ElementRef;
   top = 0;
   left = 0;
@@ -115,6 +116,13 @@ export class AppComponent {
     this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
     this.updateLiveRegion("The draggable object has been moved to the drop zone");
   }
+
+  undoMoveObjectToDropzone() {
+    this.renderer.appendChild(this.placeToDropForUndo.nativeElement, this.elementToDrag.nativeElement);
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
+    this.updateLiveRegion("The drag and drop operation has been cancelled");
+  }
+  
 
   updateLiveRegion(message) {
     var text = this.renderer.createText(message);

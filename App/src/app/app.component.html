@@ -17,7 +17,7 @@
   </section>
 
   <section id="wrapper1">
-    <section id="dragzone" class="zone item">
+    <section id="dragzone" #dropzone2 class="zone item">
       <div class="zoneLabel">DRAG ZONE</div>
 
       <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0"
@@ -51,6 +51,11 @@
     <button id="moveButton" (click)="moveObjectToDropzone()">Move Object</button>
   </section>
 
+  <section>
+    <h2>Undo drag and drop with a button</h2>
+    <button (click)="undoMoveObjectToDropzone()">Undo drag and drop</button>
+  </section>
+
   <section #liveRegion id="liveRegion" aria-autocomplete="" aria-live="polite">
     <h2>Drag and Drop Status</h2>
   </section>
@@ -62,6 +67,6 @@
         <li><a href="https://stackblitz.com/github/clane/ng-a11y-drag-and-drop/tree/master/App">stackblitz</a></li>
       </ul>
   </section>
-  
+
 
 </div><!-- end page -->
