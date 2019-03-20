@@ -1,42 +1,57 @@
-<h1>{{ title }}</h1>
-<div id="wrapper1">
-<h2>Instructions</h2>
-<ul>
-  <li>You can use a mouse to drag and drop the object</li>
-  <li>You can use the keyboard by tabbing to the object and using the arrow keys to move the object to the drop zone</li>
-  <li>You can activate one of four buttons to move the object up, down, right and left to move the object to the drop zone</li>
-  <li>You activate a single button to move the object to the drop zone </li> 
-</ul>
-
-<section id="dragzone" class="zone item">
-  <div class="zoneLabel">DRAG ZONE</div>
-
-  <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)"  tabindex="0" (keydown)="getKeyAndMove($event)" (focus)="showKeyboardDragInstructions()">
-    <div id="dragLabel">
-      Drag this object
-    </div>
-  </div>
-</section>
-
-<section #dropzone id="dropzone" class="zone" (drop)="drop($event)" (dragover)="allowDrop($event)" aria-live="polite">
-  <div class="zoneLabel">DROP ZONE</div>
-</section>
-
-</div>
-
-<h2>Use buttons instead of the arrow keys to move the object to the drop zone</h2>
-<button (click)="moveLeft()">Move Left</button>
-<button (click)="moveRight()">Move Right</button>
-<button (click)="moveUp()">Move Up</button>
-<button (click)="moveDown()">Move Down</button>
+<div id="page">
 
 
-<h2>Use a single button to move the object to the drop zone</h2>
-<button id="moveButton" (click)="moveObject()">Move Object</button>
-
-
-
-
-<section #liveRegion id="liveRegion" aria-autocomplete="" aria-live="polite">
-  <h2>Drag and Drop Status</h2>
+  <section>
+    <h1>{{ title }}</h1>
+    <h2>Instructions</h2>
+    <ul>
+      <li>You can use a mouse to drag and drop the object</li>
+      <li>You can use the keyboard by tabbing to the object and using the arrow keys to move the object to the drop zone
+      </li>
+      <li>You can activate one of four buttons to move the object up, down, right and left to move the object to the
+        drop
+        zone</li>
+      <li>You activate a single button to move the object to the drop zone </li>
+    </ul>
   </section>
+
+  <section id="wrapper1">
+    <section id="dragzone" class="zone item">
+      <div class="zoneLabel">DRAG ZONE</div>
+
+      <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0"
+        (keydown)="getKeyAndMove($event)" (focus)="showKeyboardDragInstructions()">
+        <div id="dragLabel">
+          Drag this object
+        </div>
+      </div>
+    </section>
+
+    <section #dropzone id="dropzone" class="zone" (drop)="drop($event)" (dragover)="allowDrop($event)"
+      aria-live="polite">
+      <div class="zoneLabel">DROP ZONE</div>
+    </section>
+
+  </section><!-- end wrapper1 -->
+
+
+
+  <section>
+    <h2>Use buttons instead of the arrow keys to move the object to the drop zone</h2>
+    <button (click)="moveLeft()">Move Left</button>
+    <button (click)="moveRight()">Move Right</button>
+    <button (click)="moveUp()">Move Up</button>
+    <button (click)="moveDown()">Move Down</button>
+  </section>
+
+
+  <section>
+    <h2>Use a single button to move the object to the drop zone</h2>
+    <button id="moveButton" (click)="moveObject()">Move Object</button>
+  </section>
+
+  <section #liveRegion id="liveRegion" aria-autocomplete="" aria-live="polite">
+    <h2>Drag and Drop Status</h2>
+  </section>
+
+</div><!-- end page -->
