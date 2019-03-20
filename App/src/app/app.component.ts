@@ -1,4 +1,4 @@
-import { Component, ViewChild, Renderer2 } from '@angular/core';
+import { Component, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import { element } from '@angular/core/src/render3';
 import { $ } from 'protractor';
 
@@ -9,14 +9,16 @@ import { $ } from 'protractor';
 })
 export class AppComponent {
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) { }
 
   title = 'A11y Drag and Drop';
-  @ViewChild('dragObj') elementToDrag;
-  @ViewChild('dropzone') placeToDrop;
-  @ViewChild('liveRegion') liveRegionToUpdate;
+  @ViewChild('dragObj') elementToDrag:ElementRef;
+  @ViewChild('dropzone') placeToDrop:ElementRef;
+  @ViewChild('liveRegion') liveRegionToUpdate:ElementRef;
   top = 0;
-  left = 0; 
+  left = 0;
+
+
 
   allowDrop($event) {
     $event.preventDefault();
@@ -35,93 +37,88 @@ export class AppComponent {
   getKeyAndMove($event) {
 
     let keyCode = $event.keyCode;
-    
-    if(keyCode !== 9){
-      $event.preventDefault(); 
-    }
-  
 
-
-      var dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
-      var dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
-    
-      if(dragObjRect.top > dropzoneRect.top && 
-          dragObjRect.left > dropzoneRect.left &&
-          dragObjRect.bottom < dropzoneRect.bottom &&
-          dragObjRect.right < dropzoneRect.right
-        ){
-        alert('over drop zone, press the OK Button or the Enter key');
-        this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
-        this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
-
-      }
-    
-      switch (keyCode) {
-        case 37: //left arrow key
-          this.moveLeft();
-          break;
-        case 38: //Up arrow key
-          this.moveUp();
-          break;
-        case 39: //right arrow key
-          this.moveRight();
-          break;
-        case 40: //down arrow key 
-          this.moveDown();
-          break;
-      }
-
-      this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
-      this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
+    if (keyCode !== 9) {
+      $event.preventDefault();
     }
 
-    moveLeft() {
-      let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
-      this.left = this.left - 5;
-      let message = "moving left" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
-      this.updateLiveRegion(message); 
-    }
+    let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
+    let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
 
-    moveUp() {
-      let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
-      this.top = this.top - 5;
-      let message = "moving up" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
-      this.updateLiveRegion(message); 
-    }
-
-    moveRight() {
-      let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
-      this.left = this.left + 5;
-      let message = "moving right" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
-      this.updateLiveRegion(message); 
-    }
-
-    moveDown() {
-      let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
-      this.top = this.top + 5;
-      let message = "moving down" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
-      this.updateLiveRegion(message); 
-      
-      
-    }
-
-    showKeyboardDragInstructions(){
-      let message = 'Use the arrow keys to drag this item to the dropzone';
-      this.updateLiveRegion(message);
-    }
-
-    moveObject(){
+    if (dragObjRect.top > dropzoneRect.top &&
+      dragObjRect.left > dropzoneRect.left &&
+      dragObjRect.bottom < dropzoneRect.bottom &&
+      dragObjRect.right < dropzoneRect.right
+    ) {
+      alert('over drop zone, press the OK Button or the Enter key');
       this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
       this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
-      this.updateLiveRegion("The draggable object has been moved to the drop zone");
     }
 
-    updateLiveRegion(message){
-      var text = this.renderer.createText(message);
-      this.renderer.appendChild(this.liveRegionToUpdate.nativeElement, text);
+    switch (keyCode) {
+      case 37: //left arrow key
+        this.moveLeft(dragObjRect);
+        break;
+      case 38: //Up arrow key
+        this.moveUp(dragObjRect);
+        break;
+      case 39: //right arrow key
+        this.moveRight(dragObjRect);
+        break;
+      case 40: //down arrow key 
+        this.moveDown(dragObjRect);
+        break;
     }
 
-  
+
+  }
+
+  moveLeft(dragObjRect) {
+    this.left = this.left - 5;
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
+    let message = "moving left" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+    this.updateLiveRegion(message);
+  }
+
+  moveUp(dragObjRect) {
+    this.top = this.top - 5;
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
+    let message = "moving up" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+    this.updateLiveRegion(message);
+    
+  }
+
+  moveRight(dragObjRect) {
+    this.left = this.left + 5;
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "left", this.left + 'px');
+    let message = "moving right" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+    this.updateLiveRegion(message);
+  }
+
+  moveDown(dragObjRect) {
+    this.top = this.top + 5;
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "top", this.top + 'px');
+    let message = "moving down" + " Top:" + dragObjRect.top + " Left:" + dragObjRect.left;
+    this.updateLiveRegion(message);
+  }
+
+  showKeyboardDragInstructions() {
+    let message = 'Use the arrow keys to drag this item to the dropzone';
+    this.updateLiveRegion(message);
+  }
+
+  moveObject() {
+    this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
+    this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
+    this.updateLiveRegion("The draggable object has been moved to the drop zone");
+  }
+
+  updateLiveRegion(message) {
+    var text = this.renderer.createText(message);
+    this.renderer.appendChild(this.liveRegionToUpdate.nativeElement, text);
+  }
+
+
 
 }
 
