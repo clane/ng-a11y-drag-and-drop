@@ -110,7 +110,7 @@ export class AppComponent {
     this.updateLiveRegion(message);
   }
 
-  moveObject() {
+  moveObjectToDropzone() {
     this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
     this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
     this.updateLiveRegion("The draggable object has been moved to the drop zone");
@@ -130,8 +130,7 @@ export class AppComponent {
       dragObjRect.right < dropzoneRect.right
     ) {
       alert('over drop zone, press the OK Button or the Enter key');
-      this.renderer.appendChild(this.placeToDrop.nativeElement, this.elementToDrag.nativeElement);
-      this.renderer.setStyle(this.elementToDrag.nativeElement, "position", 'static');
+      this.moveObjectToDropzone(); 
     }
   }
 
