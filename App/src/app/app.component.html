@@ -18,9 +18,12 @@
 
   <section id="wrapper1">
     <section id="dragzone" #dropzone2 class="zone item">
+
+      <button (click)="initKeyboardDrag()">Start Dragging Object</button>
+
       <div class="zoneLabel">DRAG ZONE</div>
 
-      <div #dragObj style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)" tabindex="0"
+      <div #dragObj tabindex="-1" style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)" 
         (keydown)="getKeyAndMove($event)" (focus)="showKeyboardDragInstructions()">
         <div id="dragLabel">
           Drag this object

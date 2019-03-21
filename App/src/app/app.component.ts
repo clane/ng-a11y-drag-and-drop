@@ -18,6 +18,7 @@ export class AppComponent {
   @ViewChild('liveRegion') liveRegionToUpdate: ElementRef;
   top = 0;
   left = 0;
+  dragMode = false; 
   draggedAndDropped = false;
 
 
@@ -35,7 +36,12 @@ export class AppComponent {
     var data = $event.dataTransfer.getData("text");
     $event.target.appendChild(document.getElementById(data));
   }
+  
+  initKeyboardDrag() {
+    this.dragMode = !this.dragMode;
+    this.elementToDrag.nativeElement.focus();
 
+  }
   getKeyAndMove($event) {
 
     let keyCode = $event.keyCode;
