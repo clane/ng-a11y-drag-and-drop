@@ -33,9 +33,9 @@ h1 { width:100%; text-align:center; }
 button { display:block; padding:10px; margin:20px 0; }
 
 /* ZONES */
-.zone { width:40%; height:400px; margin:auto; padding:20px; float:left; margin-right:20px; border:4px solid #000;  }
+.zone { width:20%; height:400px; margin:auto; padding:20px; float:left; margin-right:20px; border:4px solid #000;  }
 
 
-#liveRegion { width:30%; margin:auto; padding:40px; border:2px solid #000; margin-top:20px; text-align:center; height:500px; overflow:scroll;  }
+#liveRegion { overflow:scroll;  }
 
 #moveButtons button { display: inline-block; margin-left:10px; }

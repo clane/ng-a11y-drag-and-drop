@@ -36,6 +36,11 @@
       <div class="zoneLabel">DROP ZONE</div>
     </section>
 
+    <section #liveRegion id="liveRegion" class="zone" aria-live="polite">
+        <h2>Drag and Drop Status</h2>
+    </section>
+    
+
   </section><!-- end wrapper1 -->
 
 
@@ -59,10 +64,7 @@
     <button (click)="undoMoveObjectToDropzone()">Undo drag and drop</button>
   </section>
 
-  <section #liveRegion id="liveRegion" aria-autocomplete="" aria-live="polite">
-    <h2>Drag and Drop Status</h2>
-  </section>
-
+  
   <section>
       <h2>Links</h2>
       <ul>
