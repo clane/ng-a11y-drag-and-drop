@@ -37,11 +37,7 @@ d
     $event.target.appendChild(document.getElementById(data));
   }
   
-  initKeyboardDrag() {
-    this.dragMode = !this.dragMode;
-    this.elementToDrag.nativeElement.focus();
-
-  }
+  
   getKeyAndMove($event) {
 
     let keyCode = $event.keyCode;
@@ -50,11 +46,7 @@ d
       $event.preventDefault();
     }
 
-    if(this.draggedAndDropped === true){
-      alert('press ok so start over'); 
-      this.undoMoveObjectToDropzone(); 
-    }
-
+  
     let dragObjRect = this.elementToDrag.nativeElement.getBoundingClientRect();
     let dropzoneRect = this.placeToDrop.nativeElement.getBoundingClientRect();
 
