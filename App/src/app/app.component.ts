@@ -10,8 +10,8 @@ import { $ } from 'protractor';
 export class AppComponent {
 
   constructor(private renderer: Renderer2) { }
-
-  title = 'A11y Drag and Drop';
+d
+  title = 'ADND accessible drag and drop';
   @ViewChild('dragObj') elementToDrag: ElementRef;
   @ViewChild('dropzone') placeToDrop: ElementRef;
   @ViewChild('dropzone2') placeToDropForUndo: ElementRef;

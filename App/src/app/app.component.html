@@ -19,11 +19,11 @@
   <section id="wrapper1">
     <section id="dragzone" #dropzone2 class="zone item">
 
-      <button (click)="initKeyboardDrag()">Start Dragging Object</button>
 
-      <div class="zoneLabel">DRAG ZONE</div>
 
-      <div #dragObj tabindex="-1" style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)" 
+      <h2 class="zoneLabel">Drag Zone</h2>
+
+      <div #dragObj tabindex="-1" style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)"
         (keydown)="getKeyAndMove($event)" (focus)="showKeyboardDragInstructions()">
         <div id="dragLabel">
           Drag this object
@@ -33,44 +33,34 @@
 
     <section #dropzone id="dropzone" class="zone" (drop)="drop($event)" (dragover)="allowDrop($event)"
       aria-live="polite">
-      <div class="zoneLabel">DROP ZONE</div>
+      <h2 class="zoneLabel">Drop Zone</h2>
     </section>
 
     <section #liveRegion id="liveRegion" class="zone" aria-live="polite">
-        <h2>Drag and Drop Status</h2>
+      <h2 class="zoneLabel">Status</h2>
     </section>
-    
+
 
   </section><!-- end wrapper1 -->
 
 
 
   <section id="moveButtons">
-    <h2>Use buttons instead of the arrow keys to move the object to the drop zone</h2>
-    <button (click)="moveLeft()">Move Left</button>
-    <button (click)="moveRight()">Move Right</button>
-    <button (click)="moveUp()">Move Up</button>
-    <button (click)="moveDown()">Move Down</button>
-  </section>
-
-
-  <section>
-    <h2>Use a single button to move the object to the drop zone</h2>
-    <button id="moveButton" (click)="moveObjectToDropzone()">Move Object</button>
+    <button (click)="initKeyboardDrag()">Start</button>
+    <button (click)="moveLeft()">Left</button>
+    <button (click)="moveRight()">Right</button>
+    <button (click)="moveUp()">Up</button>
+    <button (click)="moveDown()">Down</button>
+    <button id="moveButton" (click)="moveObjectToDropzone()">Just Do It!</button>
+    <button (click)="undoMoveObjectToDropzone()">Undo</button>
   </section>
 
   <section>
-    <h2>Undo drag and drop with a button</h2>
-    <button (click)="undoMoveObjectToDropzone()">Undo drag and drop</button>
-  </section>
-
-  
-  <section>
-      <h2>Links</h2>
-      <ul>
-        <li><a href="https://github.com/clane/ng-a11y-drag-and-drop">Github Repo</a></li>
-        <li><a href="https://stackblitz.com/github/clane/ng-a11y-drag-and-drop/tree/master/App">stackblitz</a></li>
-      </ul>
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://github.com/clane/ng-a11y-drag-and-drop">Github Repo</a></li>
+      <li><a href="https://stackblitz.com/github/clane/ng-a11y-drag-and-drop/tree/master/App">stackblitz</a></li>
+    </ul>
   </section>
 
 

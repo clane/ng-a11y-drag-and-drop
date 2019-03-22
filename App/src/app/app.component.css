@@ -1,19 +1,12 @@
 #page { width:80%; margin:auto; }
 
-h1 { width:100%; text-align:center; }
+h1 { width:100%; font-size:4rem; }
 
-.zoneLabel { font-weight:bold; font-size:1.5rem; margin-bottom:20px; }
+
 
 #wrapper1 {
-  width:80%; margin:auto; overflow: hidden;
+  width:80%; overflow: hidden;
 }
-
-.item {
-    order: row;
-    margin:auto;
-  }
-
-
 
 #dragObj { 
     position:relative;
@@ -30,12 +23,13 @@ h1 { width:100%; text-align:center; }
     color:yellow; 
  }
 
-button { display:block; padding:10px; margin:20px 0; }
 
 /* ZONES */
-.zone { width:20%; height:400px; margin:auto; padding:20px; float:left; margin-right:20px; border:4px solid #000;  }
+.zone { width:20%; height:265px; margin:auto; padding:20px; float:left; margin-right:20px; border:4px solid #000;  }
+.zoneLabel { font-weight:bold; font-size:1.5rem; margin-bottom:20px; text-align: center; }
 
+#liveRegion { overflow:scroll; }
 
-#liveRegion { overflow:scroll;  }
-
+button {  padding:10px; margin:20px 0; font-size:2rem; font-weight:bold; border-radius:10px; border:4px solid #000; background-color:beige; }
 #moveButtons button { display: inline-block; margin-left:10px; }
+#moveButtons button:first-of-type { margin-left:0; }
