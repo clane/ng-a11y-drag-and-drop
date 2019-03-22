@@ -5,7 +5,7 @@
 
       <h2 class="zoneLabel">Drag Zone</h2>
 
-      <div #dragObj tabindex="-1" style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)"
+      <div #dragObj tabindex="0" style="left:0px;" id="dragObj" draggable="true" (dragstart)="drag($event)"
         (keydown)="getKeyAndMove($event)" (focus)="showKeyboardDragInstructions()">
         <div id="dragLabel">
           Drag this object
